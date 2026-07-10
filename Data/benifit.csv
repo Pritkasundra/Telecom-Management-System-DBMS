@@ -1,0 +1,201 @@
+benefit_id,benefit_name,benefit_status,benefit_type,benefit_provider
+BEN000001,Disney+ Hotstar 1 Year,active,storage,Google
+BEN000002,Amazon Prime 6 Months,active,voice,Google
+BEN000003,Netflix Basic 3 Months,inactive,entertainment,Disney
+BEN000004,SonyLIV 6 Months,active,communication,Sony
+BEN000005,ZEE5 Annual,active,security,Sony
+BEN000006,JioSaavn Premium,active,value_added,Spotify
+BEN000007,Spotify Premium 3 Months,active,value_added,Spotify
+BEN000008,YouTube Premium 3 Months,active,voice,Spotify
+BEN000009,McAfee Antivirus 1 Year,active,storage,Disney
+BEN000010,Google Drive 100GB,active,communication,Spotify
+BEN000011,1000 Extra SMS,active,security,McAfee
+BEN000012,5GB Extra Data Daily,active,voice,McAfee
+BEN000013,Free International SMS 50,inactive,communication,McAfee
+BEN000014,Roaming Pack 7 Days,active,communication,Telecom Co
+BEN000015,Caller Tune Free 3 Months,active,communication,Zee
+BEN000016,VoLTE Priority,active,storage,Google
+BEN000017,Wi-Fi Calling,active,security,Sony
+BEN000018,Cloud Backup 50GB,active,entertainment,Zee
+BEN000019,Priority Customer Support,active,data,JioSaavn
+BEN000020,Cricket Live Streaming,active,communication,Spotify
+BEN000021,Disney+ Hotstar 1 Year Tier 2,active,communication,Netflix
+BEN000022,Amazon Prime 6 Months Tier 2,active,entertainment,Sony
+BEN000023,Netflix Basic 3 Months Tier 2,active,storage,McAfee
+BEN000024,SonyLIV 6 Months Tier 2,inactive,value_added,Spotify
+BEN000025,ZEE5 Annual Tier 2,active,storage,Google
+BEN000026,JioSaavn Premium Tier 2,inactive,security,Amazon
+BEN000027,Spotify Premium 3 Months Tier 2,active,storage,Disney
+BEN000028,YouTube Premium 3 Months Tier 2,active,communication,Disney
+BEN000029,McAfee Antivirus 1 Year Tier 2,active,value_added,Netflix
+BEN000030,Google Drive 100GB Tier 2,inactive,data,Zee
+BEN000031,1000 Extra SMS Tier 2,inactive,value_added,Spotify
+BEN000032,5GB Extra Data Daily Tier 2,active,value_added,Zee
+BEN000033,Free International SMS 50 Tier 2,active,voice,Netflix
+BEN000034,Roaming Pack 7 Days Tier 2,active,voice,Sony
+BEN000035,Caller Tune Free 3 Months Tier 2,active,entertainment,Netflix
+BEN000036,VoLTE Priority Tier 2,active,voice,Spotify
+BEN000037,Wi-Fi Calling Tier 2,active,data,JioSaavn
+BEN000038,Cloud Backup 50GB Tier 2,active,data,Spotify
+BEN000039,Priority Customer Support Tier 2,inactive,communication,Sony
+BEN000040,Cricket Live Streaming Tier 2,active,entertainment,Disney
+BEN000041,Disney+ Hotstar 1 Year Tier 3,active,value_added,Zee
+BEN000042,Amazon Prime 6 Months Tier 3,active,entertainment,Google
+BEN000043,Netflix Basic 3 Months Tier 3,active,communication,McAfee
+BEN000044,SonyLIV 6 Months Tier 3,active,communication,Sony
+BEN000045,ZEE5 Annual Tier 3,active,security,Disney
+BEN000046,JioSaavn Premium Tier 3,inactive,voice,Sony
+BEN000047,Spotify Premium 3 Months Tier 3,active,voice,Amazon
+BEN000048,YouTube Premium 3 Months Tier 3,active,voice,Zee
+BEN000049,McAfee Antivirus 1 Year Tier 3,active,security,Sony
+BEN000050,Google Drive 100GB Tier 3,active,entertainment,Netflix
+BEN000051,1000 Extra SMS Tier 3,active,value_added,McAfee
+BEN000052,5GB Extra Data Daily Tier 3,active,security,McAfee
+BEN000053,Free International SMS 50 Tier 3,active,storage,JioSaavn
+BEN000054,Roaming Pack 7 Days Tier 3,active,communication,Spotify
+BEN000055,Caller Tune Free 3 Months Tier 3,active,data,Telecom Co
+BEN000056,VoLTE Priority Tier 3,inactive,value_added,Netflix
+BEN000057,Wi-Fi Calling Tier 3,active,value_added,Sony
+BEN000058,Cloud Backup 50GB Tier 3,active,entertainment,JioSaavn
+BEN000059,Priority Customer Support Tier 3,active,data,Netflix
+BEN000060,Cricket Live Streaming Tier 3,active,voice,Netflix
+BEN000061,Disney+ Hotstar 1 Year Tier 4,active,value_added,Netflix
+BEN000062,Amazon Prime 6 Months Tier 4,active,voice,Spotify
+BEN000063,Netflix Basic 3 Months Tier 4,active,voice,Zee
+BEN000064,SonyLIV 6 Months Tier 4,active,storage,Google
+BEN000065,ZEE5 Annual Tier 4,active,storage,Spotify
+BEN000066,JioSaavn Premium Tier 4,inactive,value_added,Zee
+BEN000067,Spotify Premium 3 Months Tier 4,active,value_added,JioSaavn
+BEN000068,YouTube Premium 3 Months Tier 4,active,voice,McAfee
+BEN000069,McAfee Antivirus 1 Year Tier 4,active,communication,Disney
+BEN000070,Google Drive 100GB Tier 4,active,communication,Telecom Co
+BEN000071,1000 Extra SMS Tier 4,active,value_added,Sony
+BEN000072,5GB Extra Data Daily Tier 4,inactive,entertainment,McAfee
+BEN000073,Free International SMS 50 Tier 4,active,entertainment,Spotify
+BEN000074,Roaming Pack 7 Days Tier 4,active,storage,McAfee
+BEN000075,Caller Tune Free 3 Months Tier 4,active,voice,McAfee
+BEN000076,VoLTE Priority Tier 4,active,security,Sony
+BEN000077,Wi-Fi Calling Tier 4,active,data,Amazon
+BEN000078,Cloud Backup 50GB Tier 4,active,storage,McAfee
+BEN000079,Priority Customer Support Tier 4,active,value_added,Sony
+BEN000080,Cricket Live Streaming Tier 4,active,voice,Disney
+BEN000081,Disney+ Hotstar 1 Year Tier 5,active,entertainment,Sony
+BEN000082,Amazon Prime 6 Months Tier 5,active,voice,Amazon
+BEN000083,Netflix Basic 3 Months Tier 5,active,storage,Disney
+BEN000084,SonyLIV 6 Months Tier 5,active,storage,Google
+BEN000085,ZEE5 Annual Tier 5,active,entertainment,Telecom Co
+BEN000086,JioSaavn Premium Tier 5,inactive,security,Spotify
+BEN000087,Spotify Premium 3 Months Tier 5,active,data,McAfee
+BEN000088,YouTube Premium 3 Months Tier 5,inactive,security,McAfee
+BEN000089,McAfee Antivirus 1 Year Tier 5,active,entertainment,McAfee
+BEN000090,Google Drive 100GB Tier 5,active,communication,McAfee
+BEN000091,1000 Extra SMS Tier 5,inactive,communication,Disney
+BEN000092,5GB Extra Data Daily Tier 5,active,security,JioSaavn
+BEN000093,Free International SMS 50 Tier 5,inactive,communication,Google
+BEN000094,Roaming Pack 7 Days Tier 5,active,security,Google
+BEN000095,Caller Tune Free 3 Months Tier 5,inactive,data,Netflix
+BEN000096,VoLTE Priority Tier 5,active,entertainment,McAfee
+BEN000097,Wi-Fi Calling Tier 5,active,communication,Spotify
+BEN000098,Cloud Backup 50GB Tier 5,inactive,entertainment,JioSaavn
+BEN000099,Priority Customer Support Tier 5,inactive,value_added,Spotify
+BEN000100,Cricket Live Streaming Tier 5,inactive,security,Sony
+BEN000101,Disney+ Hotstar 1 Year Tier 6,active,voice,Spotify
+BEN000102,Amazon Prime 6 Months Tier 6,inactive,security,Amazon
+BEN000103,Netflix Basic 3 Months Tier 6,active,voice,Netflix
+BEN000104,SonyLIV 6 Months Tier 6,active,storage,Zee
+BEN000105,ZEE5 Annual Tier 6,active,security,Disney
+BEN000106,JioSaavn Premium Tier 6,active,voice,Spotify
+BEN000107,Spotify Premium 3 Months Tier 6,active,voice,JioSaavn
+BEN000108,YouTube Premium 3 Months Tier 6,active,data,JioSaavn
+BEN000109,McAfee Antivirus 1 Year Tier 6,active,security,JioSaavn
+BEN000110,Google Drive 100GB Tier 6,active,data,JioSaavn
+BEN000111,1000 Extra SMS Tier 6,active,data,Zee
+BEN000112,5GB Extra Data Daily Tier 6,active,voice,Spotify
+BEN000113,Free International SMS 50 Tier 6,inactive,value_added,Google
+BEN000114,Roaming Pack 7 Days Tier 6,active,voice,Netflix
+BEN000115,Caller Tune Free 3 Months Tier 6,inactive,entertainment,Sony
+BEN000116,VoLTE Priority Tier 6,inactive,communication,Zee
+BEN000117,Wi-Fi Calling Tier 6,active,security,Google
+BEN000118,Cloud Backup 50GB Tier 6,active,data,Telecom Co
+BEN000119,Priority Customer Support Tier 6,active,data,Zee
+BEN000120,Cricket Live Streaming Tier 6,inactive,voice,Netflix
+BEN000121,Disney+ Hotstar 1 Year Tier 7,active,data,Netflix
+BEN000122,Amazon Prime 6 Months Tier 7,active,data,Telecom Co
+BEN000123,Netflix Basic 3 Months Tier 7,active,security,Amazon
+BEN000124,SonyLIV 6 Months Tier 7,active,data,Google
+BEN000125,ZEE5 Annual Tier 7,active,voice,Sony
+BEN000126,JioSaavn Premium Tier 7,active,storage,Sony
+BEN000127,Spotify Premium 3 Months Tier 7,active,entertainment,Netflix
+BEN000128,YouTube Premium 3 Months Tier 7,active,entertainment,Disney
+BEN000129,McAfee Antivirus 1 Year Tier 7,active,data,JioSaavn
+BEN000130,Google Drive 100GB Tier 7,inactive,communication,Disney
+BEN000131,1000 Extra SMS Tier 7,active,voice,Zee
+BEN000132,5GB Extra Data Daily Tier 7,active,entertainment,Spotify
+BEN000133,Free International SMS 50 Tier 7,active,voice,Telecom Co
+BEN000134,Roaming Pack 7 Days Tier 7,active,communication,Spotify
+BEN000135,Caller Tune Free 3 Months Tier 7,active,security,Zee
+BEN000136,VoLTE Priority Tier 7,active,security,Telecom Co
+BEN000137,Wi-Fi Calling Tier 7,inactive,storage,Disney
+BEN000138,Cloud Backup 50GB Tier 7,active,voice,Disney
+BEN000139,Priority Customer Support Tier 7,active,voice,Netflix
+BEN000140,Cricket Live Streaming Tier 7,active,security,Amazon
+BEN000141,Disney+ Hotstar 1 Year Tier 8,active,data,Google
+BEN000142,Amazon Prime 6 Months Tier 8,active,communication,Zee
+BEN000143,Netflix Basic 3 Months Tier 8,active,security,Zee
+BEN000144,SonyLIV 6 Months Tier 8,active,communication,Zee
+BEN000145,ZEE5 Annual Tier 8,active,voice,Netflix
+BEN000146,JioSaavn Premium Tier 8,active,communication,Telecom Co
+BEN000147,Spotify Premium 3 Months Tier 8,active,value_added,Spotify
+BEN000148,YouTube Premium 3 Months Tier 8,inactive,security,Zee
+BEN000149,McAfee Antivirus 1 Year Tier 8,active,data,Spotify
+BEN000150,Google Drive 100GB Tier 8,active,entertainment,Telecom Co
+BEN000151,1000 Extra SMS Tier 8,active,voice,Disney
+BEN000152,5GB Extra Data Daily Tier 8,active,communication,Telecom Co
+BEN000153,Free International SMS 50 Tier 8,active,storage,Netflix
+BEN000154,Roaming Pack 7 Days Tier 8,inactive,storage,McAfee
+BEN000155,Caller Tune Free 3 Months Tier 8,active,entertainment,Amazon
+BEN000156,VoLTE Priority Tier 8,active,voice,Amazon
+BEN000157,Wi-Fi Calling Tier 8,active,communication,Telecom Co
+BEN000158,Cloud Backup 50GB Tier 8,active,communication,Netflix
+BEN000159,Priority Customer Support Tier 8,active,voice,Amazon
+BEN000160,Cricket Live Streaming Tier 8,active,voice,Telecom Co
+BEN000161,Disney+ Hotstar 1 Year Tier 9,active,voice,Disney
+BEN000162,Amazon Prime 6 Months Tier 9,active,storage,McAfee
+BEN000163,Netflix Basic 3 Months Tier 9,active,security,Spotify
+BEN000164,SonyLIV 6 Months Tier 9,active,voice,Telecom Co
+BEN000165,ZEE5 Annual Tier 9,active,storage,McAfee
+BEN000166,JioSaavn Premium Tier 9,active,voice,McAfee
+BEN000167,Spotify Premium 3 Months Tier 9,active,security,Amazon
+BEN000168,YouTube Premium 3 Months Tier 9,inactive,data,Zee
+BEN000169,McAfee Antivirus 1 Year Tier 9,active,value_added,Disney
+BEN000170,Google Drive 100GB Tier 9,active,storage,Telecom Co
+BEN000171,1000 Extra SMS Tier 9,active,value_added,Netflix
+BEN000172,5GB Extra Data Daily Tier 9,inactive,voice,Netflix
+BEN000173,Free International SMS 50 Tier 9,inactive,data,Zee
+BEN000174,Roaming Pack 7 Days Tier 9,active,value_added,Sony
+BEN000175,Caller Tune Free 3 Months Tier 9,active,storage,McAfee
+BEN000176,VoLTE Priority Tier 9,inactive,voice,Zee
+BEN000177,Wi-Fi Calling Tier 9,active,storage,Telecom Co
+BEN000178,Cloud Backup 50GB Tier 9,active,storage,Zee
+BEN000179,Priority Customer Support Tier 9,active,entertainment,Spotify
+BEN000180,Cricket Live Streaming Tier 9,inactive,data,Telecom Co
+BEN000181,Disney+ Hotstar 1 Year Tier 10,active,value_added,Disney
+BEN000182,Amazon Prime 6 Months Tier 10,active,entertainment,Disney
+BEN000183,Netflix Basic 3 Months Tier 10,inactive,data,Spotify
+BEN000184,SonyLIV 6 Months Tier 10,active,security,Sony
+BEN000185,ZEE5 Annual Tier 10,active,voice,McAfee
+BEN000186,JioSaavn Premium Tier 10,active,value_added,Zee
+BEN000187,Spotify Premium 3 Months Tier 10,active,communication,Telecom Co
+BEN000188,YouTube Premium 3 Months Tier 10,active,communication,Spotify
+BEN000189,McAfee Antivirus 1 Year Tier 10,active,data,Spotify
+BEN000190,Google Drive 100GB Tier 10,active,storage,Google
+BEN000191,1000 Extra SMS Tier 10,active,storage,McAfee
+BEN000192,5GB Extra Data Daily Tier 10,active,communication,Amazon
+BEN000193,Free International SMS 50 Tier 10,active,value_added,Sony
+BEN000194,Roaming Pack 7 Days Tier 10,active,voice,McAfee
+BEN000195,Caller Tune Free 3 Months Tier 10,inactive,security,Spotify
+BEN000196,VoLTE Priority Tier 10,active,data,Spotify
+BEN000197,Wi-Fi Calling Tier 10,active,voice,Sony
+BEN000198,Cloud Backup 50GB Tier 10,active,value_added,Zee
+BEN000199,Priority Customer Support Tier 10,active,voice,Google
+BEN000200,Cricket Live Streaming Tier 10,active,value_added,Disney
