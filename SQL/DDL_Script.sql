@@ -44,8 +44,6 @@ CREATE TABLE Subscriber (
     Street          VARCHAR(100),
     Pincode         VARCHAR(10),
     City            VARCHAR(50),
-    Number_coin     INT             DEFAULT 0,      -- referral coin balance
-    Expiry_date     TIMESTAMP,
 
     CONSTRAINT fk_subscriber_referral
         FOREIGN KEY (Referred_by) REFERENCES Subscriber(Subscriber_id)
@@ -74,6 +72,7 @@ CREATE TABLE Offer (
     Offer_id            VARCHAR(10)     PRIMARY KEY,
     offer_name          VARCHAR(100)    NOT NULL,
     offer_type          VARCHAR(50),  
+    value_unit          VARCHAR(50),
 );
 
 -- ============================================================
@@ -83,7 +82,7 @@ CREATE TABLE Offer (
 CREATE TABLE Service_plan (
     Plan_id         VARCHAR(10)     PRIMARY KEY,
     Plan_name       VARCHAR(100)    NOT NULL,
-    Plan_category   VARCHAR(50),
+    Plan_type   VARCHAR(50),
     Voice_limit     INT,            -- in minutes
     SMS_limit       INT,
     Data_limit      DECIMAL(10,2),  -- in MB
@@ -199,7 +198,6 @@ CREATE TABLE Sim_plan (
     Plan_id         VARCHAR(10)     NOT NULL,
     start_date      TIMESTAMP,
     end_date        TIMESTAMP,
-    Status          VARCHAR(20)     DEFAULT 'active',
 
     CONSTRAINT fk_simplan_sim
         FOREIGN KEY (Sim_id)  REFERENCES Sim_card(Sim_id),
@@ -219,6 +217,14 @@ CREATE TABLE Portability_request (
     completion_date     TIMESTAMP,
     new_operator        VARCHAR(100),
     Reason              TEXT,
+    Status              VARCHAR(20) NOT NULL
+    CHECK (Status IN (
+            'Pending',
+            'Approved',
+            'Rejected',
+            'Completed',
+            'Cancelled'
+        )),
 
     CONSTRAINT fk_port_sim
         FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
@@ -249,7 +255,7 @@ CREATE TABLE Complaint (
 CREATE TABLE SMS (
     SMS_id          VARCHAR(10)     PRIMARY KEY,
     Sim_id          VARCHAR(10)     NOT NULL,
-    Time            TIMESTAMP,
+    Date_and_time   TIMESTAMP,
     Charge          DECIMAL(8,2),
     Direcation_SMS  VARCHAR(10),    -- 'sent' / 'received'
     Other_phone_no  VARCHAR(15),
