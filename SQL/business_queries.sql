@@ -76,3 +76,9 @@ SELECT sim_id,
 FROM SIM_Device_History
 GROUP BY sim_id
 HAVING COUNT(DISTINCT imei_no) > 1;
+
+-- 10 Count of Portability requests for each status
+SELECT status,
+       COUNT(*) AS total_requests
+FROM Portability_request
+GROUP BY status;
