@@ -1,40 +1,6 @@
--- ============================================================
--- NETWORK MANAGEMENT SYSTEM — FULL DDL SCRIPT (CORRECTED)
--- Datatypes corrected based on sample data values
--- ============================================================
-
--- Drop tables in reverse FK dependency order (safe re-run)
-DROP TABLE IF EXISTS Tower_Connection;
-DROP TABLE IF EXISTS Sim_tower;
-DROP TABLE IF EXISTS SIM_Device;
-DROP TABLE IF EXISTS Call_Record;
-DROP TABLE IF EXISTS SMS;
-DROP TABLE IF EXISTS Data_usage;
-DROP TABLE IF EXISTS Complaint;
-DROP TABLE IF EXISTS Portability_request;
-DROP TABLE IF EXISTS Payment;
-DROP TABLE IF EXISTS Bill;
-DROP TABLE IF EXISTS Recharge;
-DROP TABLE IF EXISTS Sim_plan;
-DROP TABLE IF EXISTS Service_plan_offer;
-DROP TABLE IF EXISTS Plan_benifit;
-DROP TABLE IF EXISTS Sim_card;
-DROP TABLE IF EXISTS Device;
-DROP TABLE IF EXISTS Call_tower;
-DROP TABLE IF EXISTS Service_plan;
-DROP TABLE IF EXISTS Offer;
-DROP TABLE IF EXISTS Benifit;
-DROP TABLE IF EXISTS Email;
-DROP TABLE IF EXISTS Subscriber;
-
--- ============================================================
--- 1. SUBSCRIBER
--- FIX: Subscriber_id → VARCHAR(10)  (sample: SUB000001)
---      Referred_by   → VARCHAR(10)  (sample: SUB033521)
--- ============================================================
 CREATE TABLE Subscriber (
     Subscriber_id   VARCHAR(10)     PRIMARY KEY,
-    Referred_by     VARCHAR(10)     NULL,           -- self-referencing FK
+    Referred_by     VARCHAR(10)     NULL,           
     First_name      VARCHAR(50)     NOT NULL,
     Last_name       VARCHAR(50)     NOT NULL,
     DOB             DATE            NOT NULL,
@@ -49,10 +15,6 @@ CREATE TABLE Subscriber (
         FOREIGN KEY (Referred_by) REFERENCES Subscriber(Subscriber_id)
 );
 
--- ============================================================
--- 2. EMAIL  (multi-valued attribute → separate table)
--- FIX: Subscriber_id → VARCHAR(10)
--- ============================================================
 CREATE TABLE Email (
     Subscriber_id   VARCHAR(10)     NOT NULL,
     Email           VARCHAR(150)    NOT NULL,
@@ -64,10 +26,7 @@ CREATE TABLE Email (
         ON DELETE CASCADE
 );
 
--- ============================================================
--- 3. OFFER
--- FIX: Offer_id → VARCHAR(10)  (sample: OFF000001)
--- ============================================================
+
 CREATE TABLE Offer (
     Offer_id            VARCHAR(10)     PRIMARY KEY,
     offer_name          VARCHAR(100)    NOT NULL,
@@ -75,25 +34,19 @@ CREATE TABLE Offer (
     value_unit          VARCHAR(50),
 );
 
--- ============================================================
--- 4. SERVICE_PLAN
--- FIX: Plan_id → VARCHAR(10)  (sample: PLN000001)
--- ============================================================
+
 CREATE TABLE Service_plan (
     Plan_id         VARCHAR(10)     PRIMARY KEY,
     Plan_name       VARCHAR(100)    NOT NULL,
     Plan_type   VARCHAR(50),
-    Voice_limit     INT,            -- in minutes
+    Voice_limit     INT,           
     SMS_limit       INT,
-    Data_limit      DECIMAL(10,2),  -- in MB
+    Data_limit      DECIMAL(10,2), 
     Validity_days   INT,
     Charge          DECIMAL(10,2)   NOT NULL
 );
 
--- ============================================================
--- 5. SERVICE_PLAN_OFFER  (M:N junction — Service_plan ↔ Offer)
--- FIX: Plan_id → VARCHAR(10), Offer_id → VARCHAR(10)
--- ============================================================
+
 CREATE TABLE Service_plan_offer (
     Plan_id         VARCHAR(10)     NOT NULL,
     Offer_id        VARCHAR(10)     NOT NULL,
@@ -109,10 +62,7 @@ CREATE TABLE Service_plan_offer (
         FOREIGN KEY (Offer_id) REFERENCES Offer(Offer_id)
 );
 
--- ============================================================
--- 6. BENIFIT
--- FIX: benefit_id → VARCHAR(10)  (sample: BEN000001)
--- ============================================================
+
 CREATE TABLE Benifit (
     benefit_id          VARCHAR(10)     PRIMARY KEY,
     benefit_name        VARCHAR(100)    NOT NULL,
@@ -120,10 +70,7 @@ CREATE TABLE Benifit (
     benefit_provider    VARCHAR(100)
 );
 
--- ============================================================
--- 7. PLAN_BENIFIT  (M:N junction — Service_plan ↔ Benifit)
--- FIX: Plan_id → VARCHAR(10), benefit_id → VARCHAR(10)
--- ============================================================
+
 CREATE TABLE Plan_benifit (
     Plan_id         VARCHAR(10)     NOT NULL,
     benefit_id      VARCHAR(10)     NOT NULL,
@@ -139,10 +86,7 @@ CREATE TABLE Plan_benifit (
         FOREIGN KEY (benefit_id) REFERENCES Benifit(benefit_id)
 );
 
--- ============================================================
--- 8. DEVICE
--- No datatype changes needed (IMEI_no already VARCHAR(20))
--- ============================================================
+
 CREATE TABLE Device (
     IMEI_no             VARCHAR(20)     PRIMARY KEY,
     Device_brand        VARCHAR(50),
@@ -152,10 +96,7 @@ CREATE TABLE Device (
     Registration_date   TIMESTAMP
 );
 
--- ============================================================
--- 9. CALL_TOWER
--- No datatype changes needed (Tower_id values are plain integers)
--- ============================================================
+
 CREATE TABLE Call_tower (
     Tower_id        INT             PRIMARY KEY,
     capacity        INT,
@@ -164,19 +105,13 @@ CREATE TABLE Call_tower (
     Tower_status    VARCHAR(20)     DEFAULT 'active'
 );
 
--- ============================================================
--- 10. SIM_CARD
--- FIX: Sim_id      → VARCHAR(10)  (sample: SIM000001)
---      Subscriber_id → VARCHAR(10)
---      Replace_by  → VARCHAR(10)
--- ============================================================
 CREATE TABLE Sim_card (
     Sim_id          VARCHAR(10)     PRIMARY KEY,
     Subscriber_id   VARCHAR(10)     NOT NULL,
-    Replace_by      VARCHAR(10)     NULL,           -- self-referencing FK
+    Replace_by      VARCHAR(10)     NULL,          
     Mobile_no       VARCHAR(15)     NOT NULL UNIQUE,
     Sim_status      VARCHAR(20)     DEFAULT 'active',
-    Sim_category    VARCHAR(20),                    -- prepaid / postpaid
+    Sim_category    VARCHAR(20),                    
     Activation_date TIMESTAMP
 );
 
@@ -186,12 +121,6 @@ ALTER TABLE Sim_card
     ADD CONSTRAINT fk_sim_replace
         FOREIGN KEY (Replace_by)    REFERENCES Sim_card(Sim_id);
 
--- ============================================================
--- 11. SIM_PLAN  (M:N junction — Sim_card ↔ Service_plan)
--- FIX: Sim_plan_id → VARCHAR(10)  (sample: SPL000001)
---      Sim_id      → VARCHAR(10)
---      Plan_id     → VARCHAR(10)
--- ============================================================
 CREATE TABLE Sim_plan (
     Sim_plan_id     VARCHAR(10)     PRIMARY KEY,
     Sim_id          VARCHAR(10)     NOT NULL,
@@ -205,11 +134,7 @@ CREATE TABLE Sim_plan (
         FOREIGN KEY (Plan_id) REFERENCES Service_plan(Plan_id)
 );
 
--- ============================================================
--- 12. PORTABILITY_REQUEST
--- FIX: Port_id → VARCHAR(10)  (sample: PORT000001)
---      Sim_id   → VARCHAR(10)
--- ============================================================
+
 CREATE TABLE Portability_request (
     Port_id             VARCHAR(10)     PRIMARY KEY,
     Sim_id              VARCHAR(10)     NOT NULL,
@@ -230,11 +155,7 @@ CREATE TABLE Portability_request (
         FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
 );
 
--- ============================================================
--- 13. COMPLAINT
--- FIX: Complaint_id  → VARCHAR(10)  (sample: CMP000001)
---      Subscriber_id → VARCHAR(10)
--- ============================================================
+
 CREATE TABLE Complaint (
     Complaint_id        VARCHAR(10)     PRIMARY KEY,
     Subscriber_id       VARCHAR(10)     NOT NULL,
@@ -247,31 +168,24 @@ CREATE TABLE Complaint (
         FOREIGN KEY (Subscriber_id) REFERENCES Subscriber(Subscriber_id)
 );
 
--- ============================================================
--- 14. SMS
--- FIX: SMS_id → VARCHAR(10)  (sample: SMS0000001)
---      Sim_id  → VARCHAR(10)
--- ============================================================
+
 CREATE TABLE SMS (
     SMS_id          VARCHAR(10)     PRIMARY KEY,
     Sim_id          VARCHAR(10)     NOT NULL,
     Date_and_time   TIMESTAMP,
     Charge          DECIMAL(8,2),
-    Direcation_SMS  VARCHAR(10),    -- 'sent' / 'received'
+    Direcation_SMS  VARCHAR(10),    
     Other_phone_no  VARCHAR(15),
 
     CONSTRAINT fk_sms_sim
         FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
 );
 
--- ============================================================
--- 15. DATA_USAGE
--- FIX: Sim_id → VARCHAR(10)
--- ============================================================
+
 CREATE TABLE Data_usage (
     Date        DATE        NOT NULL,
     Sim_id      VARCHAR(10) NOT NULL,
-    Data_usage  DECIMAL(12,4),      -- in MB
+    Data_usage  DECIMAL(12,4),     
 
     PRIMARY KEY (Date, Sim_id),
 
@@ -279,17 +193,12 @@ CREATE TABLE Data_usage (
         FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
 );
 
--- ============================================================
--- 16. CALL_RECORD
--- FIX: call_id → VARCHAR(12)  (sample: CALL0000001)
---      Sim_id   → VARCHAR(10)
--- ============================================================
 CREATE TABLE Call_Record (
     call_id         VARCHAR(12)     PRIMARY KEY,
     Sim_id          VARCHAR(10)     NOT NULL,
     other_phone_no  VARCHAR(15),
-    Duration        INT,            -- in seconds
-    call_type       VARCHAR(20),    -- 'incoming' / 'outgoing'
+    Duration        INT,            
+    call_type       VARCHAR(20),    
     call_cost       DECIMAL(8,2),
     Date_and_time   TIMESTAMP,
     Call_direction  VARCHAR(10)
@@ -298,10 +207,6 @@ CREATE TABLE Call_Record (
         FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
 );
 
--- ============================================================
--- 17. SIM_DEVICE  (M:N junction — Sim_card ↔ Device)
--- FIX: Sim_id → VARCHAR(10)
--- ============================================================
 CREATE TABLE SIM_Device (
     Sim_id      VARCHAR(10)     NOT NULL,
     IMEI_no     VARCHAR(20)     NOT NULL,
@@ -316,18 +221,13 @@ CREATE TABLE SIM_Device (
         FOREIGN KEY (IMEI_no) REFERENCES Device(IMEI_no)
 );
 
--- ============================================================
--- 19. TOWER_CONNECTION
--- FIX: Sim_id → VARCHAR(10)
---      Tower_id stays INT (plain integer values in sample data)
--- ============================================================
 CREATE TABLE Tower_Connection (
     Connection_id       INT             PRIMARY KEY,
     Sim_id              VARCHAR(10)     NOT NULL,
     Tower_id            INT             NOT NULL,
     Connect_time        TIMESTAMP,
     Disconnect_time     TIMESTAMP,
-    Signal_strength     DECIMAL(6,2),   -- in dBm
+    Signal_strength     DECIMAL(6,2),   
 
     CONSTRAINT fk_tc_sim
         FOREIGN KEY (Sim_id)   REFERENCES Sim_card(Sim_id),
@@ -335,10 +235,7 @@ CREATE TABLE Tower_Connection (
         FOREIGN KEY (Tower_id) REFERENCES Call_tower(Tower_id)
 );
 
--- ============================================================
--- 20. PAYMENT
--- FIX: Transaction_id → VARCHAR(12)  (sample: TXN0000001)
--- ============================================================
+
 CREATE TABLE Payment (
     Transaction_id  VARCHAR(12)     PRIMARY KEY,
     Payment_amount  DECIMAL(12,2)   NOT NULL,
@@ -348,16 +245,11 @@ CREATE TABLE Payment (
     Payment_for     VARCHAR(20)     CHECK (Payment_for IN ('recharge', 'bill'))
 );
 
--- ============================================================
--- 21. RECHARGE
--- FIX: Recharge_id    → VARCHAR(10)  (sample: REC000001)
---      Sim_plan_id    → VARCHAR(10)
---      Transaction_id → VARCHAR(12)
--- ============================================================
+
 CREATE TABLE Recharge (
     Recharge_id     VARCHAR(10)     PRIMARY KEY,
     Sim_plan_id     VARCHAR(10)     NOT NULL,
-    Transaction_id  VARCHAR(12)     NOT NULL UNIQUE, -- 1:1 with Payment
+    Transaction_id  VARCHAR(12)     NOT NULL UNIQUE, 
     GST             DECIMAL(10,2),
     Recharge_amount DECIMAL(10,2),
     Recharge_status VARCHAR(20)     DEFAULT 'success',
@@ -369,16 +261,11 @@ CREATE TABLE Recharge (
         FOREIGN KEY (Transaction_id) REFERENCES Payment(Transaction_id)
 );
 
--- ============================================================
--- 22. BILL
--- FIX: Bill_id       → VARCHAR(10)  (sample: BILL000001)
---      Transaction_id → VARCHAR(12)
---      Sim_plan_id    → VARCHAR(10)
--- ============================================================
+
 CREATE TABLE Bill (
     Bill_id         VARCHAR(10)     PRIMARY KEY,
-    Transaction_id  VARCHAR(12)     NOT NULL UNIQUE, -- 1:1 with Payment
-    Sim_plan_id     VARCHAR(10)     NOT NULL UNIQUE, -- 1:1 with Sim_plan
+    Transaction_id  VARCHAR(12)     NOT NULL UNIQUE,
+    Sim_plan_id     VARCHAR(10)     NOT NULL UNIQUE,
     Bill_status     VARCHAR(20)     DEFAULT 'unpaid',
     SMS_charge      DECIMAL(10,2),
     call_charge     DECIMAL(10,2),
@@ -393,7 +280,3 @@ CREATE TABLE Bill (
         FOREIGN KEY (Sim_plan_id) REFERENCES Sim_plan(Sim_plan_id)
 );
 
--- ============================================================
--- END OF DDL
--- Total tables: 22
--- ============================================================
