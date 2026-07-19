@@ -51,10 +51,11 @@ GROUP BY complaint_type
 ORDER BY total_complaints DESC;
 
 -- 6 Find the total recharge amount for each SIM card
-SELECT sim_id,
-       SUM(recharge_amount) AS total_recharge
-FROM Recharge
-GROUP BY sim_id;
+SELECT sp.sim_id,
+       SUM(r.recharge_amount) AS total_recharge
+FROM Recharge r
+join Sim_plan sp on sp.sim_plan=r.sim_plan
+GROUP BY sp.sim_id;
 
 -- 7 Find subscribers with more than one SIM card
 SELECT subscriber_id,
@@ -73,7 +74,7 @@ ORDER BY total_connections DESC;
 -- 9 Find SIM cards that have been used in multiple devices
 SELECT sim_id,
        COUNT(DISTINCT imei_no) AS total_devices
-FROM SIM_Device_History
+FROM SIM_Device
 GROUP BY sim_id
 HAVING COUNT(DISTINCT imei_no) > 1;
 
