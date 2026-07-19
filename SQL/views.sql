@@ -16,10 +16,10 @@ SELECT
 FROM subscriber s
 JOIN sim_card sc
     ON s.subscriber_id = sc.subscriber_id
-JOIN subscribe_to st
-    ON sc.sim_id = st.sim_id
+JOIN sim_plan spc
+    ON sc.sim_id = spc.sim_id
 JOIN service_plan sp
-    ON st.plan_id = sp.plan_id;
+    ON spc.plan_id = sp.plan_id;
 
 
 -- 2. Tower Activity Summary
@@ -29,7 +29,6 @@ SELECT
     ct.location,
     ct.coverage_area,
     ct.tower_status,
-    COUNT(tc.sim_id) AS total_connections,
     COUNT(DISTINCT tc.sim_id) AS unique_sims,
     AVG(tc.signal_strength) AS avg_signal_strength
 FROM cell_tower ct
@@ -55,15 +54,14 @@ SELECT
 FROM complaint c
 JOIN subscriber s
     ON c.subscriber_id = s.subscriber_id
-WHERE c.Resolution_date IS NULL;   -- FIX: added missing semicolon
+WHERE c.Resolution_date IS NULL;  
 
 
 -- 4. Pending Bills
 CREATE VIEW pending_bills AS
 SELECT
     b.bill_id,
-    sc.sim_id,
-    sc.mobile_no,
+    sp.sim_id,
     b.bill_date,
     b.due_date,
     b.call_charge,
@@ -72,6 +70,6 @@ SELECT
     b.gst,
     b.bill_status
 FROM bill b
-JOIN sim_card sc
-    ON b.sim_id = sc.sim_id
+JOIN sim_plan sp
+    ON b.sim_plan_id = sp.sim_plan_id
 WHERE b.bill_status = 'Pending';
