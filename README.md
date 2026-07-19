@@ -8,9 +8,9 @@ A schema for a telecom service provider platform (like Jio/Airtel/Vi) — subscr
 |---|---|
 | `Telecom_ER_diagram.png` | ER diagram of the whole schema |
 | `DDL.sql` | tables ( partitioned) |
-| `Index.sql` | indexes for common queries |
-| `Views.sql` | reporting views |
-| `Analytic_queries.sql` | business analytics queries |
+| `Index.sql` | 17 indexes for common queries |
+| `Views.sql` | 4 reporting views |
+| `Analytic_queries.sql` | 10 business analytics queries |
 
 ## Structure
 
