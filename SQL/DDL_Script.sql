@@ -11,8 +11,7 @@ CREATE TABLE Subscriber (
     Pincode         VARCHAR(10),
     City            VARCHAR(50),
 
-    CONSTRAINT fk_subscriber_referral
-        FOREIGN KEY (Referred_by) REFERENCES Subscriber(Subscriber_id)
+   FOREIGN KEY (Referred_by) REFERENCES Subscriber(Subscriber_id)
 );
 
 CREATE TABLE Email (
@@ -21,9 +20,8 @@ CREATE TABLE Email (
 
     PRIMARY KEY (Subscriber_id, Email),
 
-    CONSTRAINT fk_email_subscriber
-        FOREIGN KEY (Subscriber_id) REFERENCES Subscriber(Subscriber_id)
-        ON DELETE CASCADE
+    FOREIGN KEY (Subscriber_id) REFERENCES Subscriber(Subscriber_id)
+    ON DELETE CASCADE
 );
 
 
@@ -56,10 +54,8 @@ CREATE TABLE Service_plan_offer (
 
     PRIMARY KEY (Plan_id, Offer_id),
 
-    CONSTRAINT fk_spo_plan
-        FOREIGN KEY (Plan_id)  REFERENCES Service_plan(Plan_id),
-    CONSTRAINT fk_spo_offer
-        FOREIGN KEY (Offer_id) REFERENCES Offer(Offer_id)
+   FOREIGN KEY (Plan_id)  REFERENCES Service_plan(Plan_id),
+   FOREIGN KEY (Offer_id) REFERENCES Offer(Offer_id)
 );
 
 
@@ -80,10 +76,8 @@ CREATE TABLE Plan_benifit (
 
     PRIMARY KEY (Plan_id, benefit_id),
 
-    CONSTRAINT fk_pb_plan
-        FOREIGN KEY (Plan_id)    REFERENCES Service_plan(Plan_id),
-    CONSTRAINT fk_pb_benefit
-        FOREIGN KEY (benefit_id) REFERENCES Benifit(benefit_id)
+    FOREIGN KEY (Plan_id)    REFERENCES Service_plan(Plan_id),
+    FOREIGN KEY (benefit_id) REFERENCES Benifit(benefit_id)
 );
 
 
@@ -116,9 +110,7 @@ CREATE TABLE Sim_card (
 );
 
 ALTER TABLE Sim_card
-    ADD CONSTRAINT fk_sim_subscriber
         FOREIGN KEY (Subscriber_id) REFERENCES Subscriber(Subscriber_id),
-    ADD CONSTRAINT fk_sim_replace
         FOREIGN KEY (Replace_by)    REFERENCES Sim_card(Sim_id);
 
 CREATE TABLE Sim_plan (
@@ -128,9 +120,7 @@ CREATE TABLE Sim_plan (
     start_date      TIMESTAMP,
     end_date        TIMESTAMP,
 
-    CONSTRAINT fk_simplan_sim
         FOREIGN KEY (Sim_id)  REFERENCES Sim_card(Sim_id),
-    CONSTRAINT fk_simplan_plan
         FOREIGN KEY (Plan_id) REFERENCES Service_plan(Plan_id)
 );
 
@@ -150,8 +140,6 @@ CREATE TABLE Portability_request (
             'Completed',
             'Cancelled'
         )),
-
-    CONSTRAINT fk_port_sim
         FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
 );
 
@@ -164,8 +152,7 @@ CREATE TABLE Complaint (
     description         TEXT,
     Complaint_type      VARCHAR(50),
 
-    CONSTRAINT fk_complaint_subscriber
-        FOREIGN KEY (Subscriber_id) REFERENCES Subscriber(Subscriber_id)
+    FOREIGN KEY (Subscriber_id) REFERENCES Subscriber(Subscriber_id)
 );
 
 
@@ -177,8 +164,7 @@ CREATE TABLE SMS (
     Direcation_SMS  VARCHAR(10),    
     Other_phone_no  VARCHAR(15),
 
-    CONSTRAINT fk_sms_sim
-        FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
+    FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
 );
 
 
@@ -189,8 +175,7 @@ CREATE TABLE Data_usage (
 
     PRIMARY KEY (Date, Sim_id),
 
-    CONSTRAINT fk_datausage_sim
-        FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
+    FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
 );
 
 CREATE TABLE Call_Record (
@@ -203,8 +188,7 @@ CREATE TABLE Call_Record (
     Date_and_time   TIMESTAMP,
     Call_direction  VARCHAR(10)
 
-    CONSTRAINT fk_callrec_sim
-        FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
+    FOREIGN KEY (Sim_id) REFERENCES Sim_card(Sim_id)
 );
 
 CREATE TABLE SIM_Device (
@@ -215,10 +199,9 @@ CREATE TABLE SIM_Device (
 
     PRIMARY KEY (Sim_id, IMEI_no),
 
-    CONSTRAINT fk_simdev_sim
-        FOREIGN KEY (Sim_id)  REFERENCES Sim_card(Sim_id),
-    CONSTRAINT fk_simdev_device
-        FOREIGN KEY (IMEI_no) REFERENCES Device(IMEI_no)
+    FOREIGN KEY (Sim_id)  REFERENCES Sim_card(Sim_id),
+    
+    FOREIGN KEY (IMEI_no) REFERENCES Device(IMEI_no)
 );
 
 CREATE TABLE Tower_Connection (
@@ -229,10 +212,9 @@ CREATE TABLE Tower_Connection (
     Disconnect_time     TIMESTAMP,
     Signal_strength     DECIMAL(6,2),   
 
-    CONSTRAINT fk_tc_sim
-        FOREIGN KEY (Sim_id)   REFERENCES Sim_card(Sim_id),
-    CONSTRAINT fk_tc_tower
-        FOREIGN KEY (Tower_id) REFERENCES Call_tower(Tower_id)
+    
+    FOREIGN KEY (Sim_id)   REFERENCES Sim_card(Sim_id),
+    FOREIGN KEY (Tower_id) REFERENCES Call_tower(Tower_id)
 );
 
 
@@ -255,10 +237,8 @@ CREATE TABLE Recharge (
     Recharge_status VARCHAR(20)     DEFAULT 'success',
     Recharge_Date   TIMESTAMP,
 
-    CONSTRAINT fk_recharge_simplan
-        FOREIGN KEY (Sim_plan_id)    REFERENCES Sim_plan(Sim_plan_id),
-    CONSTRAINT fk_recharge_payment
-        FOREIGN KEY (Transaction_id) REFERENCES Payment(Transaction_id)
+    FOREIGN KEY (Sim_plan_id)    REFERENCES Sim_plan(Sim_plan_id),
+    FOREIGN KEY (Transaction_id) REFERENCES Payment(Transaction_id)
 );
 
 
@@ -274,9 +254,7 @@ CREATE TABLE Bill (
     Bill_date       TIMESTAMP,
     Due_date        TIMESTAMP,
 
-    CONSTRAINT fk_bill_payment
-        FOREIGN KEY (Transaction_id) REFERENCES Payment(Transaction_id),
-    CONSTRAINT fk_bill_simplan
-        FOREIGN KEY (Sim_plan_id) REFERENCES Sim_plan(Sim_plan_id)
+    FOREIGN KEY (Transaction_id) REFERENCES Payment(Transaction_id),
+    FOREIGN KEY (Sim_plan_id) REFERENCES Sim_plan(Sim_plan_id)
 );
 
