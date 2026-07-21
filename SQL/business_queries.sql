@@ -5,7 +5,6 @@ FROM Recharge r
 JOIN Payment p ON r.Transaction_id = p.Transaction_id AND p.Payment_status = 'Success'
 JOIN Sim_plan sp ON r.Sim_plan_id = sp.Sim_plan_id
 JOIN Service_plan svc ON sp.Plan_id = svc.Plan_id
-JOIN Sim_card sc ON sp.Sim_id = sc.Sim_id AND sc.Sim_type = 'Prepaid'
 WHERE r.Recharge_Date >= DATE_TRUNC('month', CURRENT_DATE)
 GROUP BY sp.Plan_id, svc.Plan_name;
 
@@ -50,12 +49,16 @@ WHERE resolution_date IS NOT NULL
 GROUP BY complaint_type
 ORDER BY total_complaints DESC;
 
--- 6 Find the total recharge amount for each SIM card
-SELECT sp.sim_id,
-       SUM(r.recharge_amount) AS total_recharge
-FROM Recharge r
-join Sim_plan sp on sp.sim_plan=r.sim_plan
-GROUP BY sp.sim_id;
+-- 6 Most Popular Service Plan
+SELECT sp.plan_id,
+       sv.plan_name,
+       COUNT(*) AS total_users
+FROM SIM_Plan sp
+JOIN Service_Plan sv
+ON sp.plan_id = sv.plan_id
+GROUP BY sp.plan_id, sv.plan_name
+ORDER BY total_users DESC
+LIMIT 1;
 
 -- 7 Find subscribers with more than one SIM card
 SELECT subscriber_id,
